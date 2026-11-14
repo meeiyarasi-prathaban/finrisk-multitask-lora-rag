@@ -4,7 +4,7 @@
 
 **Domain:** Banking & Financial Services (BFSI) – Commercial Credit Risk Assessment & Regulatory Compliance  
 **GitHub Repository:** [finrisk-multitask-lora-rag](https://github.com/meeiyarasi-prathaban/finrisk-multitask-lora-rag)  
-**Live Application:** [Streamlit Community Cloud Deployment]([https://finrisk-multitask-lora-rag.streamlit.app](https://finrisk-multitask-lora-rag-79cygwcyftznfxcuhxsr9j.streamlit.app/))
+**Live Application:** [Streamlit Community Cloud Deployment](https://finrisk-multitask-lora-rag-79cygwcyftznfxcuhxsr9j.streamlit.app/)
 
 ---
 
@@ -24,7 +24,7 @@ This repository contains a unified, cloud-native AI platform engineered for comm
 
 3. **Part III – RAG Credit Policy & Compliance Engine (`Tab 3`)**
    - Partitions internal bank lending manuals using `RecursiveCharacterTextSplitter` (`chunk_size=350`, `chunk_overlap=40`), embeds chunks via `text-embedding-3-small`, and indexes them in `FAISS`.
-   - Retrieves top-$k$ (`k=3`) policy passages to synthesize grounded audit responses with expandable source provenance cards.
+   - Retrieves top-k (`k=3`) policy passages to synthesize grounded audit responses with expandable source provenance cards.
 
 4. **Part IV – Situated Learning: Workplace Application**
    - Complete enterprise credit underwriting adaptation, turnaround latency analysis (`3.5 hours` → `<15 seconds`), and air-gapped VPC + PII/MNPI governance architecture documented in `AIMLZG549_Assignment2_Complete_Documentation.docx`.
@@ -52,3 +52,27 @@ This repository contains a unified, cloud-native AI platform engineered for comm
 ```bash
 python3 -m venv venv
 source venv/bin/activate      # On Windows: .\venv\Scripts\activate
+```
+
+### 2. Install Dependencies
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### 3. Launch the Unified Web Application
+```bash
+streamlit run app.py
+```
+
+### 4. Run Part 2 LoRA Benchmark Verification (CLI)
+```bash
+python part2_lora_finetuning.py --mode simulate
+```
+
+---
+
+## Verification Modes (For Evaluators)
+
+- **Offline Mock Mode (Zero Credentials Required):** Check **Enable Mock Mode (Offline Testing)** in the left sidebar to execute deterministic pipelines across all three tabs without an OpenAI API key.
+- **Live OpenAI API Mode:** Uncheck Mock Mode, enter a valid OpenAI API key (`sk-...`) in the sidebar, and run live inference and FAISS embedding retrieval.
